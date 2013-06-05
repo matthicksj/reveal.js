@@ -253,6 +253,20 @@ function linkify( selector ) {
 					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
 				</section>
 
+        <section data-state="type_me_state">
+          <h2>Typed Content</h2>
+          <p id="type_me">Content can be typed with a JavaScript effect</p>
+					<pre><code data-trim contenteditable>
+Reveal.addEventListener( 'type_me_state', function() {
+  $('#type_me').typewrite({
+      'delay': 20,
+      'extra_char': ' ',
+      'trim': true
+  });
+}, false);
+					</code></pre>
+        </section>
+
 				<section>
 					<h2>Intergalactic Interconnections</h2>
 					<p>
@@ -296,6 +310,10 @@ function linkify( selector ) {
 					</a>
 				</section>
 
+        <section fullscreen-img="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png">
+          <h2>Fullscreen image!</h2>
+        </section>
+
 				<section>
 					<h2>Export to PDF</h2>
 					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
@@ -333,6 +351,8 @@ function linkify( selector ) {
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.min.js"></script>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/jquerytypewriter.js"></script>
 
 		<script>
 
@@ -354,12 +374,20 @@ function linkify( selector ) {
 					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'lib/js/fullscreen-img.js' }
 					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
 					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
 
+      Reveal.addEventListener( 'type_me_state', function() {
+        $('#type_me').typewrite({
+            'delay': 100,
+            'extra_char': ' ',
+            'trim': true
+        });
+      }, false);
 		</script>
 
 	</body>
